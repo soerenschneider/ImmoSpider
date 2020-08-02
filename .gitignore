@@ -1,7 +1,8 @@
 config
-deploy2aws.sh
 .idea/
 .ipynb_checkpoints
 *.pyc
+*.db
+*.csv
 __pycache__/
 venv/
