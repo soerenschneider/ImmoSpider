@@ -1,6 +1,8 @@
 .git
 .ipynb_checkpoints/
-apartments.csv
+*.csv
 *.ipynb
+*.db
 config
 immoscience/
+venv/

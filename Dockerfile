@@ -1,10 +1,15 @@
-FROM kennethreitz/pipenv
+FROM python:3 AS builder
 
+RUN useradd scrapy && mkdir /app && chown scrapy /app
+USER scrapy
 COPY . /app
+WORKDIR /app
 
-COPY yacrontab.yaml /etc/yacron.d/yacrontab.yaml
+RUN make venv
 
-# ENTRYPOINT ["/yacron/bin/yacron"]
-
-CMD yacron -c /etc/yacron.d/yacrontab.yaml
-# CMD scrapy crawl immoscout -o apartments.csv -a url=$URL  -L INFO
+FROM python:3-slim
+RUN useradd scrapy && mkdir /app && chown scrapy /app
+USER scrapy
+COPY --from=builder /app /app
+WORKDIR /app
+CMD venv/bin/scrapy crawl immoscout -o /output/apartments.csv -a url=$URL  -L INFO
