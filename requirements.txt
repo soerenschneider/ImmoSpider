@@ -1,0 +1,8 @@
+jupyter
+scrapy
+pandas
+matplotlib
+seaborn
+tpot
+googlemaps
+sendgrid >=5.0,<6.0"
