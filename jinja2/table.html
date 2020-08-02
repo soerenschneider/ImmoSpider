@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+        $('#apartments').DataTable();
+    } );
+    </script>
+</head>
+<body>
+    <table id="apartments">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>District</th>
+                <th>Rent</th>
+                <th>Space</th>
+                <th>Address</th>
+                <th>Rooms</th>
+                <th>Balcony</th>
+                <th>Garden</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entry in items %}
+        <tr>
+            <td><a href="{{ entry.url }}">{{ entry.title }}</a></td>
+            <td>{{ entry.district }}</td>
+            <td>{{ entry.rent }}€</td>
+            <td>{{ entry.sqm }}m²</td>
+            <td>{{ entry.address }}</td>
+            <td>{{ entry.rooms }}</td>
+            <td>{{ entry.balcony }}</td>
+            <td>{{ entry.garden }}</td>
+            <td>{{ entry.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
