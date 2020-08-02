@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import json
+import datetime
 from immospider.items import ImmoscoutItem
-
 
 class ImmoscoutSpider(scrapy.Spider):
     name = "immoscout"
@@ -36,6 +36,7 @@ class ImmoscoutSpider(scrapy.Spider):
                     data = result["resultlist.realEstate"]
 
                     # print(data)
+                    item['date'] = datetime.datetime.utcnow().isoformat()
 
                     item['immo_id'] = data['@id']
                     item['url'] = response.urljoin("/expose/" + str(data['@id']))

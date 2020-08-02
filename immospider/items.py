@@ -13,6 +13,7 @@ class ImmoscoutItem(scrapy.Item):
     #  name = scrapy.Field()
     immo_id = scrapy.Field()
     url = scrapy.Field()
+    date = scrapy.Field()
     title = scrapy.Field()
     address = scrapy.Field()
     city = scrapy.Field()
